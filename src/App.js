@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react' //rafce functional comp
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar';
+import ListItems from './components/ListItems';
+import About from './pages/About';
+import ToDo from './pages/ToDo';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div>
+        <NavBar title='ToDo List App'/>
+        <Route path="/" exact component={ListItems}/>
+        <Route path="/about" component={About}/>
+        <Route path="/todo" exact component={ToDo} />
+        <Route path="/todo/:id" component={ToDo}/>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+const styleH1 = {
+  color: 'white',
+  textAlign: 'center',
+
+};
+
+export default App
